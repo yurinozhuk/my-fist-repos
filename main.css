@@ -80,67 +80,89 @@ align-items: center;
     color: rgb(0, 0, 0);
     font-family: 'Kaushan Script', cursive;
 }
-/* Nav Togle *****for Nav-Navigator - you 
-need to write a new feature to make the mobile version drop down menu
- - it is better to use Java Script -  but here, we have only HTML and CSS*/
- .nav_toggle{
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    z-index: 1;
-    width: 30px;
-    padding: 10px 0;
-    font-size: 0;
-    color: transparent;
-    border: 0;
-    background: none;
-    cursor: pointer;
+/*****************BURGER MENU*************/
+.wrapper{
     display: none;
+    margin: 0;
+    width: 120px;
+    background-color: #000;
+    position: relative;
+    color: white;
+    text-align: center;
+    height: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
-.nav_toggle_item{
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #da0c0c;
+#check_menu{
+    display:none;
+}
+
+label{
+    display: none;  
     position: absolute;
     top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-    /* transition: background .2s linear; */
-}
-.nav_toggle_item:before{
-    top: -8px;
-}
-.nav_toggle_item:after{
-    bottom: -8px;
-}
-/* - it is better to use Java Script -  but here, we have only HTML and CSS*/
-/* .nav_toggle.active .nav_toggle_item{
-    background: none;
-}
-.nav_toggle.active .nav_toggle_item:before{
-    transform-origin: left top;
-    transform: rotate(45deg)
-    translateX(-2px);   
-} */
-/* .nav_toggle.active .nav_toggle_item:after{
-    transform-origin: left bottom;
-    transform: rotate(-45deg)
-    translateX(-3px);
-} */
-.nav_toggle_item:before,
-.nav_toggle_item:after{
-    content: "";
+    left: -17px;
     width: 100%;
-    height: 3px;
-    position: absolute;
-    background-color: #da0c0c;
-    left: 0;
-    z-index: 1;
-    transition: transform .2s linear;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+    line-height: 40px;
 }
+.burger_line{
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 35px;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.5s all;
+}
+.second, .third{
+    top: 18px;
+
+}
+.fourth{
+    top: 28px;
+    
+}
+.main_menu{
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    max-height: 0;
+    font-size: 0;
+    overflow: hidden;
+    transition: 0.5s all;
+
+}
+.main_menu_item{
+    display: none;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-top: 1px solid rgb(255, 255, 255,.3);
+    background-color: #000;
+}
+#check_menu:checked ~.main_menu{
+    max-height: 500px;
+    font-size: 16px;
+}
+#check_menu:checked ~.first{
+    display: none;
+}
+#check_menu:checked ~.second{
+    transform: rotate(45deg)
+}
+#check_menu:checked ~.third{
+    transform: rotate(-45deg)
+}
+#check_menu:checked ~.fourth{
+    display: none;
+}
+
 /****************Intro *********************/
 .intro{
 width: 100%;
@@ -643,9 +665,19 @@ transition: opacity .1s linear;
         margin: 0;
         padding: 8px 210px;
     }
-    .nav_toggle{
+    .wrapper{
         display: block;
     }
+        label{
+        display: block;
+    }
+    .main_menu{
+        display: block;
+    } 
+    .main_menu_item{
+        display: block;
+    }
+    
     .section{
         padding: 40px 0;
     }
@@ -705,6 +737,18 @@ transition: opacity .1s linear;
     }
     .section_header{
         margin-bottom: 50px;
+    }
+    .wrapper{
+        display: block;
+    }
+        label{
+        display: block;
+    }
+    .main_menu{
+        display: block;
+    } 
+    .main_menu_item{
+        display: block;
     }
     .stat_item{
         width: 100%;
